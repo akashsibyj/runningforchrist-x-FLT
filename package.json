@@ -1,0 +1,23 @@
+{
+  "name": "runner-intro-loader",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Running for Christ × Fear The Lamb loader animation as a React component.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "vite": "5.4.11"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

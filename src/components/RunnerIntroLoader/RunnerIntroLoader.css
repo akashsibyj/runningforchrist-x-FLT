@@ -1,0 +1,85 @@
+/* The player: the film fills the box above; the controls sit below it in fixed-height rows, so the film's size never
+   changes when you switch modes. Monochrome, in the loader's own paper and ink. */
+.ril {
+  --ril-paper: #EFEFEF;
+  --ril-ground: #E2E2E0;
+  --ril-ink: #0B0B0B;
+  --ril-bar: #161616;
+  --ril-bar-2: #262626;
+  --ril-text: #F2F2F0;
+  --ril-muted: #A9A9A6;
+  --ril-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --ril-sans: "Barlow", "Helvetica Neue", Arial, system-ui, sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  overflow: hidden;
+  background: var(--ril-paper); /* (the loading screen's own paper: no dark edge while it starts or resizes) */
+  color: var(--ril-text);
+  font: 400 14px/1.35 var(--ril-sans);
+  outline: none;
+}
+.ril:focus-visible { box-shadow: inset 0 0 0 3px #FFFFFF; }
+.ril *, .ril *::before, .ril *::after { box-sizing: border-box; }
+
+.ril-box { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; background: var(--ril-paper); }
+.ril-host { position: absolute; inset: 0; overflow: hidden; }
+.ril-fx { position: absolute; left: 0; top: 0; pointer-events: none; display: block; }
+
+/* The film's own stage, exactly as the film's base styles set it (scoped to the player). */
+.ril-stage { position: absolute; left: 0; top: 0; overflow: hidden; transform-origin: 0 0;
+  --ground: #E2E2E0; --main: #000000; --second: #1C1C1C; --accent: #BDBDBD; color: var(--second); font-family: var(--sans, system-ui, sans-serif); }
+.ril-stage .ground { position: absolute; inset: 0; background: var(--ground); overflow: hidden; }
+.ril-stage .sign { position: absolute; transform-origin: 50% 50%; }
+.ril-stage .sign svg { display: block; width: 100%; height: 100%; }
+.ril-stage .paper-vig { position: absolute; inset: 0; background: radial-gradient(120% 95% at 50% 50%, transparent 55%, color-mix(in srgb, var(--second) 8%, transparent)); }
+
+.ril-cover { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 12px; padding: 24px; text-align: center;
+  background: var(--ril-paper); color: #4A4A48; font-size: 14px; z-index: 2; }
+.ril-error { color: #1C1C1C; }
+.ril-error p { margin: 0; max-width: 46ch; }
+
+/* Controls */
+.ril-controls { flex: 0 0 auto; display: grid; gap: 6px; padding: 8px 10px 10px; background: var(--ril-bar); border-top: 1px solid #000; }
+.ril-frame { display: grid; grid-template-columns: 44px 1fr 44px; gap: 8px; align-items: center; height: 64px; }
+.ril-frame-text { min-width: 0; height: 64px; display: grid; align-content: center; gap: 2px; overflow: hidden; }
+.ril-frame-head { display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap; overflow: hidden; }
+.ril-num { font: 500 12px/1.2 var(--ril-mono); color: var(--ril-muted); font-variant-numeric: tabular-nums; flex: none; }
+.ril-title { font-weight: 600; font-size: 15px; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.ril-chip { flex: none; font: 500 11px/1 var(--ril-mono); color: var(--ril-muted); border: 1px solid #3A3A38; padding: 3px 6px; }
+.ril-look { color: #D6D6D3; }
+.ril-desc { margin: 0; color: #C9C9C6; font-size: 13px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.6em; }
+
+.ril-track { height: 22px; display: flex; align-items: center; }
+.ril-track input[type="range"] { width: 100%; margin: 0; accent-color: #FFFFFF; cursor: pointer; height: 22px; background: transparent; }
+.ril-track input[type="range"]:disabled { cursor: default; opacity: .4; }
+
+.ril-bar { display: flex; align-items: center; gap: 8px; height: 44px; overflow-x: auto; overflow-y: hidden; white-space: nowrap; scrollbar-width: thin; }
+.ril-btn { flex: none; height: 40px; min-width: 40px; padding: 0 14px; border: 1px solid #4A4A48; background: var(--ril-bar-2); color: var(--ril-text);
+  font: 600 14px/1 var(--ril-sans); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 0; }
+.ril-btn:hover:not(:disabled) { border-color: #8A8A87; }
+.ril-btn:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+.ril-btn:disabled { opacity: .35; cursor: default; }
+.ril-primary { background: var(--ril-text); color: var(--ril-ink); border-color: var(--ril-text); min-width: 84px; }
+.ril-step { height: 48px; width: 44px; padding: 0; font-size: 24px; font-weight: 500; }
+.ril-toggle .ril-dot { width: 10px; height: 10px; border: 1.5px solid currentColor; border-radius: 50%; }
+.ril-toggle[aria-pressed="true"] { border-color: #FFFFFF; }
+.ril-toggle[aria-pressed="true"] .ril-dot { background: currentColor; }
+.ril-time { flex: none; margin-left: auto; font: 400 13px/1 var(--ril-mono); color: var(--ril-muted); font-variant-numeric: tabular-nums; padding: 0 4px; }
+.ril-jump { flex: none; display: inline-flex; gap: 6px; align-items: center; margin: 0; }
+.ril-jump input { width: 92px; height: 40px; padding: 0 10px; border: 1px solid #4A4A48; background: #0E0E0E; color: var(--ril-text); font: 400 14px var(--ril-mono); border-radius: 0; }
+.ril-jump input:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+.ril-note { color: #FFFFFF; }
+.ril-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 560px) {
+  .ril-controls { padding: 6px 8px 8px; }
+  .ril-btn { padding: 0 10px; font-size: 13px; }
+  .ril-primary { min-width: 70px; }
+  .ril-title { font-size: 14px; }
+  .ril-look { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .ril * { transition: none !important; } }

@@ -1,0 +1,10 @@
+# Keep line endings consistent between Windows and other systems
+* text=auto eol=lf
+
+# Images are binary: never touch their bytes
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary

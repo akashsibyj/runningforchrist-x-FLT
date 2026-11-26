@@ -101,7 +101,7 @@ const MERGE_A = 0.035, MERGE_LAG = 0.035;
 // The x is drawn X_SCALE of its approved size, about its own centre. FLOW (original time): after the crosses have lit, the
 // light flows on down from their foot through the x and then FTL, one continuous movement (fading in at its start and
 // out at its end); FTL_A: its strength on FTL.
-const X_SCALE = 0.8, FLOW = [2.5, 3.08], FLOW_X = [2.58, 2.73], FLOW_F = 2.78, FTL_A = 0.85;
+const X_SCALE = 0.8, FLOW = [2.5, 2.84], FTL_A = 0.85;
 const END_T = 5 - 7 / 24, LOOP_BRIDGE = 0.4; // (the hold ends on original frame 195)
 const SPECK = [1.64, 1.8], SWEEP = [2.45, 3.15], PULSE = [3.07, 3.67], PULSES = 2, PULSE_K = 0.03, SWEEP_A = 1, X_A = 0.85, BAND_H = 0.09, CR = [152, 356];
 // The ground: the moment his foot lands, a short black streak spreads out under it (GROW), showing the surface he
@@ -774,9 +774,7 @@ kit.scene('runner-intro', {
     let fT = S.ftl ? parseFloat(S.ftl.style.top) : NaN, fH = S.ftl ? parseFloat(S.ftl.style.height) : NaN;
     if (!Number.isFinite(fT) || !(fH > 0)) { fH = Math.max(44, 0.164 * G.Ub); fT = G.topF + 0.759 * G.Ub; }
     const h = 0.06 * G.Ub, af = eo(seg(uf, 0, 0.1)) * (1 - eio(seg(uf, 0.85, 1)));
-    const keys = [[FLOW[0], oy + CR[1] * kL], [FLOW_X[0], xT - h], [FLOW_X[1], xT + xH + h], [FLOW_F, fT - h], [FLOW[1], fT + fH + h]];
-    let yf = keys[0][1];
-    for (let i = 1; i < keys.length; i++) if (T >= keys[i - 1][0]) yf = lerp(keys[i - 1][1], keys[i][1], seg(T, keys[i - 1][0], keys[i][0]));
+    const yf = lerp(oy + CR[1] * kL, fT + fH + h, uf); // (one steady pace all the way down)
     const on = uf > 0 && uf < 1 && Number.isFinite(yf);
     if (xl && on && yf - h < xT + xH && yf + h > xT) {
       xl.style.display = 'block';

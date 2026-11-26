@@ -4,7 +4,7 @@ The loader animation as a React component: the runner from the reference video o
 foot touches the ground on his 3rd step (frame 67), a short black streak spreads on the ground under it and at that
 moment he fades as the black circle bursts open; it eases back to its size as the three silver crosses fade in, and the
 approved loader carries on (rise, × and FTL): the crosses light up, the middle one first, and the light flows on down through the × (drawn a little smaller) and FTL,
-and the finished identity holds still for 1.6 s (longer if the website is still loading, see `ready`). It draws every frame with the same code and images as the film. The whole animation runs 4.88 s.
+and the finished identity holds still for 1.8 s (longer if the website is still loading, see `ready`). It draws every frame with the same code and images as the film. The whole animation runs 4.88 s.
 
 The runner plays at 1.5 times the video's pace, so his stride keeps time with the logo.
 
@@ -17,9 +17,9 @@ The runner plays at 1.5 times the video's pace, so his stride keeps time with th
 | 120–124 | 1.76–1.92 s | The black circle bursts open from a point as he fades: its segments slide into place either side of the centre, with short edge streaks; its momentum carries it a touch (3%) past its size. No big black crosses. |
 | 125–134 | 1.96–2.34 s | The clean, centred circle eases back to its size (125–128). The crosses are dark; a concentrated white light travels down the middle cross, lighting it, with a soft bloom (129–134). |
 | 135–140 | 2.38–2.59 s | The approved loader: rise and ×. A quarter of a second after the middle one, the left and right crosses light the same way, a little softer. |
-| 141–147 | 2.63–2.88 s | FTL fades in as approved; the outer crosses finish lighting and the crosses settle (by 143): the middle one keeps a faint, steady metallic sheen and the outer two rest a touch softer; and the light flows on down from them through the × (144–147). |
-| 148–155 | 2.92–3.21 s | The light flows on down through FTL as it arrives, then fades. |
-| 156–195 | 3.25–4.88 s | The finished identity holds, still, for 1.6 s (and stays while the website is still loading, see `ready`). |
+| 141–146 | 2.63–2.84 s | FTL fades in as approved; the outer crosses finish lighting and the crosses settle (by 143): the middle one keeps a faint, steady metallic sheen and the outer two rest a touch softer; and the light flows on down from them through the × (144–146). |
+| 147–150 | 2.88–3.00 s | The light flows straight on down through FTL, quickly, at the same steady pace as through the ×, then fades. |
+| 151–195 | 3.05–4.88 s | The finished identity holds, still, for 1.8 s (and stays while the website is still loading, see `ready`). |
 | (Loop on) | 4.88–5.28 s | The opening frame fades in over the identity (0.4 s), so the film starts again without a jump. Played only with Loop on. |
 
 Frames 137–156 are the original film's apart from the crosses lighting and the light on the ×. Frames 68–119 are not in the film.
